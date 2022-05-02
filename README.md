@@ -1,4 +1,4 @@
-# squirrels_client
+# Клиент игры Трагедия Белок
 Copyright ООО "ИТ Решения" ОГРН 1097447001838
 
 Проект открываается и собирается в FDT https://fdt.powerflasher.com/
