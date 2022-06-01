@@ -23,7 +23,7 @@
 		{
 			var result: String = buffer.readUTF();
 			buffer.readByte();
-			return result;
+			return result.replace(/img.*src/gi,"");
 		}
 
 		protected function readA(buffer: ByteArray): ByteArray
