@@ -28,6 +28,8 @@
 		public var reportCount:int = 0;
 		public var reportTickCount:int = 0;
 		public var reportedPlayerId:int = 0;
+		public var prevTargetId:int = 0;
+		
 
 		public function ReportView():void
 		{
@@ -102,6 +104,10 @@
 
 		private function report(playerId:int, targetId:int):void
 		{
+			if(Game.selfId == playerId && (Hero.self.shaman || Hero.self.game.squirrels.activeSquirrelCount != 2 && this.prevTargetId == targetId))
+         	   		return;
+         		
+         	this.prevTargetId = targetId;
 			this.reportCount++;
 
 			if (!ScreenGame.squirrelExist(playerId) || !ScreenGame.squirrelExist(targetId))
