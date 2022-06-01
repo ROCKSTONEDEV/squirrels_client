@@ -132,7 +132,7 @@
 			sendData();
 			sendPacket(PacketClient.ROUND_CAST_END, 1);
 		}
-
+		
 		protected function onRemoteCastBegin(packet: PacketRoundCastBegin):void
 		{
 			var bodyClass:Class;
@@ -155,6 +155,20 @@
 				Logger.add('CastNet->onRemoteCastBegin: ' + error.message);
 				return;
 			}
+			if([57,73,74,77,78].indexOf(data[1][0]) != -1)
+         		{
+            			data[1][1][0][0] = "";
+            			data[1][1][0][1] = "";
+            		if(data[1][0] == 78)
+            		{
+               			data[1][1][0][4] = false;
+            		}
+            		else
+            		{
+               			data[1][1][0][6] = false;
+              			data[1][1][0][7] = false;
+            		}
+         }
 
 			if (this.game.squirrels.get(playerId).shaman)
 				bodyClass = EntityFactory.getEntity(data[1][0]);
@@ -210,6 +224,10 @@
 
 		protected function onRemoteCastEnd(playerId: int, castType: int, itemId: int, success: int):void
 		{
+			if([57,73,74,77,78].indexOf(itemId) != -1)
+         		{
+            			success = 0;
+         		}
 			if (playerId == Game.selfId && (success == 1))
 				if (PacketClient.CAST_SQUIRREL == castType)
 					updateSquirrelCastItems(itemId);
