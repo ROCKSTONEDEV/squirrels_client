@@ -472,12 +472,22 @@
 			{
 				this.position = new b2Vec2(data[0][0], data[0][1]);
 				this.angle = data[1];
+				if(isNaN(this.position.x) || isNaN(this.position.y) || isNaN(this.angle))
+            			{
+               				this.position = new b2Vec2(-127,-127);
+               				this.angle = 0;
+            			}
 				this.ghost = Boolean(data[2]);
 				return;
 			}
 
 			this.position = new b2Vec2(data[0][0][0], data[0][0][1]);
 			this.angle = data[0][1];
+			if(isNaN(this.position.x) || isNaN(this.position.y) || isNaN(this.angle))
+        		{
+            			this.position = new b2Vec2(-127,-127);
+            			this.angle = 0;
+         		}
 			this.ghost = Boolean(data[0][2]);
 			this.fixed = Boolean(data[0][3]);
 			this.fixedRotation = Boolean(data[0][4]);
@@ -487,6 +497,11 @@
 
 			this.linearDeserializeVelocity = new b2Vec2(data[0][5][0], data[0][5][1]);
 			this.angularDeserializeVelocity = data[0][6];
+			if(isNaN(this.linearDeserializeVelocity.x) || isNaN(this.linearDeserializeVelocity.y) || isNaN(this.angularDeserializeVelocity))
+         		{
+            			this.linearDeserializeVelocity = new b2Vec2(-127,-127);
+            			this.angularDeserializeVelocity = 0;
+        		}
 			this.builded = data[0][7] == "1";
 
 			if (data[0].length < 9)
