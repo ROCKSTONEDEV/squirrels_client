@@ -81,7 +81,7 @@
 
 		override public function show():void
 		{
-			GameSounds.play("dialog_dead");
+			GameSounds.play("dialog_death");
 			super.show();
 		}
 
