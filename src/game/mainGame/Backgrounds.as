@@ -38,6 +38,26 @@
 		static private const ParallaxWild:Array = [
 			BackgroundWild0Layer0, BackgroundWild0Layer1
 		];
+		
+		static private const ParallaxBattle:Array = [
+			[BackgroundHard0Layer0, BackgroundHard0Layer1],
+			[BackgroundHard1Layer0, BackgroundHard1Layer1],
+			[BackgroundWild0Layer0, BackgroundWild0Layer1],
+			[BackgroundFly0Layer0, BackgroundFly0Layer1],
+			[BackgroundSwamp1Layer0, BackgroundSwamp1Layer1]
+		];
+		
+		static private const ParallaxStorm:Array = [
+			[BackgroundAnomalyZone2Layer0, BackgroundAnomalyZone2Layer1],
+			[BackgroundHard0Layer0, BackgroundHard0Layer1],
+			[BackgroundAnomalyZone0Layer0, BackgroundAnomalyZone0Layer1],
+			[BackgroundHard1Layer0, BackgroundHard1Layer1],
+			[BackgroundAnomalyZone1Layer0, BackgroundAnomalyZone1Layer1],
+			[BackgroundSnowMounts1Layer0, BackgroundSnowMounts1Layer1],
+			[BackgroundWild0Layer0, BackgroundWild0Layer1],
+			[BackgroundFly0Layer0, BackgroundFly0Layer1],
+			[BackgroundSwamp1Layer0, BackgroundSwamp1Layer1]
+		];
 
 		static private const DATA:Array = [
 			"Background0",
@@ -87,6 +107,10 @@
 					return ParallaxDesert;
 				case Locations.WILD_ID:
 					return ParallaxWild;
+				case Locations.BATTLE_ID:
+					return ParallaxBattle[int(ParallaxBattle.length * Math.random())];
+				case Locations.STORM_ID:
+					return ParallaxStorm[int(ParallaxStorm.length * Math.random())];
 			}
 			return null;
 		}
