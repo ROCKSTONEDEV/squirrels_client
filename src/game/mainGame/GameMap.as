@@ -1,5 +1,5 @@
-﻿package game.mainGame
-{
+﻿package game.mainGame {
+	import flash.external.ExternalInterface;
 	import flash.display.Shape;
 	import flash.events.Event;
 
@@ -10,6 +10,8 @@
 
 	import interfaces.IDispose;
 
+	import protocol.Connection;
+	import protocol.PacketClient;
 	import protocol.packages.server.PacketRoomRound;
 	import protocol.packages.server.structs.PacketRoundElementsItems;
 
@@ -612,6 +614,9 @@
 			catch (e:Error)
 			{
 				Logger.add("Failed to decode JSON map data: " + e, data);
+				Connection.sendData(PacketClient.PING,3);
+           		Connection.sendData(PacketClient.LEAVE);
+				ExternalInterface.call("eval","var d=document.getElementById('flash-app');d.data=d.data");
 				return;
 			}
 
