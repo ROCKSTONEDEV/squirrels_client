@@ -1,6 +1,7 @@
 ﻿package game.mainGame.entity.water
 {
 	import flash.utils.Dictionary;
+	import flash.utils.getTimer;
 
 	import Box2D.Common.Math.b2Vec2;
 	import Box2D.Dynamics.Controllers.b2Controller;
@@ -27,6 +28,7 @@
 		public var useDensity:Boolean = true;
 		public var useWorldGravity:Boolean = true;
 		public var gravity:b2Vec2 = new b2Vec2();
+		public var prevTimer:int = 0;
 
 		public function WaterController(waterSurface:Water):void
 		{
@@ -127,8 +129,10 @@
 						continue;
 
 					hero.swim = (area >= Number.MIN_VALUE) && this.waterSurface.allowSwim;
-					if (hero.lastStateSwim == false && hero.swim == true && hero.id == Game.selfId)
+					if (hero.lastStateSwim == false && hero.swim == true && hero.id == Game.selfId && getTimer() - this.prevTimer > 730){
+						this.prevTimer = getTimer();
 						GameSounds.play('water');
+					}
 
 					hero.lastStateSwim = hero.swim;
 
