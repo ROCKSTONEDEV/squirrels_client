@@ -818,9 +818,14 @@
 
 		private function onAppFriendsLoaded(ids:Array):void
 		{
+			if(ids == null)
+         	{
+            	return;
+         	}
+
 			Game.friendsSocialIds = ids;
 			Game.friendsSocialCount = ids.length;
-
+			
 			if (Game.friendsSocialCount > 0)
 			{
 				Connection.sendData(PacketClient.REQUEST_NET, Game.friendsSocialIds, Game.self.type, PlayerInfoParser.NET_ID | PlayerInfoParser.PHOTO | PlayerInfoParser.EXPERIENCE | PlayerInfoParser.ONLINE);
