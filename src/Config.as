@@ -24,7 +24,7 @@
 		static public const MIN_VERSION_PLAYER:int = 11;
 
 		static public const VERSION_MAJOR:int = 1;
-		static public const VERSION_MINOR:int = 694;
+		static public const VERSION_MINOR:int = 695;
 
 		static public const DEFAULT_API:String = "vk";
 
